@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+void tipo_parto(float peso, float semanas)
+{
+    float meses;
+    
+    meses = semanas/4;
+    
+    if(((peso > 2500) && (meses > 7)) || ((1500 < peso < 2000) && (meses > 9)))
+    {
+        printf("Parto Normal");
+    }
+    else
+    {
+        printf("Parto Cesariana");
+    }
+}
+
+int main() 
+{
+    float ps, sem;
+    
+    printf("Peso do feto (g): ");
+    scanf("%f", &ps);
+    printf("Tempo de gestação (semanas): ");
+    scanf("%f", &sem);
+    
+    if((ps >= 100) && (sem >= 28))
+    {
+        tipo_parto(ps, sem);
+    }
+    else
+    {
+        printf("Parto nao devera ser realizado, reavaliar clinicamente");
+    }
+    
+    return 0;
+}

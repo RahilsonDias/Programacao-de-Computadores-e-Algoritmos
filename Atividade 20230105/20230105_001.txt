@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+int percentual(int a, int b)
+{
+    int perc;
+    
+    perc = 100*a/b;
+    
+    return perc;
+}
+
+int absdif(int x, int y)
+{
+    int absdif;
+    
+    absdif = -1*(x - y);
+    
+    return absdif;
+}
+
+int main() 
+{
+    int n1, n2, menor, maior;
+    
+    printf("Digite dois inteiros separados por espaço: ");
+    scanf("%d %d", &n1, &n2);
+    
+    if((0 < n1 < 1000) && (0 < n2 < 1000))
+    {
+        if(n1 > n2)
+        {
+            maior = n1;
+            menor = n2;
+        }
+        else
+        {
+            maior = n2;
+            menor = n1;
+        }
+        
+        printf("O percentual do menor em relacao ao maior eh: %d%\n", percentual(menor, maior));
+        printf("O valor absoluto da diferenca eh: %d\n", absdif(menor, maior));
+    }
+    else
+    {
+        printf("Entradas invalidas");
+    }
+    
+    return 0;
+}

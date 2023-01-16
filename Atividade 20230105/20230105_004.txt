@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int fat(int n)
+{
+    int i = n, produto = 1;
+    
+    while(i > 0)
+    {
+        produto *= i;
+        i--;
+    }
+    
+    return produto;
+}
+
+int main() 
+{
+    int num;
+    
+    printf("Digite um numero: ");
+    scanf("%d", &num);
+    
+    printf("Fatorial de %d: %d", num, fat(num));
+    
+    return 0;
+}

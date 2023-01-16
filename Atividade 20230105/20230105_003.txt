@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+void perfeicao(int n)
+{
+    int i = 1, soma = 0;
+    
+    while(i < n)
+    {
+        if (n % i == 0)
+        {
+            soma += i;
+        }
+        i++;
+    }
+    
+    if(soma == n)
+    {
+        printf("O numero %d eh perfeito", n);
+    }
+    else
+    {
+        printf("O numero %d nao eh perfeito", n);
+    }
+}
+
+int main() 
+{
+    int num;
+    
+    printf("Digite um numero par: ");
+    scanf("%d", &num);
+    
+    while(num % 2 != 0)
+    {
+        printf("Entrada invalida. Digite um numero par: ");
+        scanf("%d", &num);
+    }
+    
+    perfeicao(num);
+    
+    return 0;
+}
