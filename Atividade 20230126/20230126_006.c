@@ -12,7 +12,6 @@ int main() {
             soma_l += a[i][j];
         }
         printf("Soma da linha %d: %d\n", i+1, soma_l);
-        soma_l = 0;
     }
     
     int soma_c;
@@ -23,7 +22,6 @@ int main() {
             soma_c += a[j][i];
         }
         printf("Soma da coluna %d: %d\n", i+1, soma_c);
-        soma_c = 0;
     }
     
     int soma_dp=0;
@@ -53,7 +51,7 @@ int main() {
     printf("Soma da diagonal secundaria: %d\n", soma_ds);
     
     
-    if(soma_l == soma_c == soma_dp == soma_ds)
+    if((soma_l == soma_c == 45) && (soma_dp == soma_ds == 15))
     {
         printf("A matriz eh um quadrado mágico");
     }
