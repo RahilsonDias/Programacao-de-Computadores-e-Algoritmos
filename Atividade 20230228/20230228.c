@@ -15,8 +15,7 @@ void MaisMulheres(char sexo[2][7][1]){
             mulheres_e2 += 1;
         }
     }
-    //printf("Mulheres na equipe 1: %d\n", mulheres_e1);
-    //printf("Mulheres na equipe 2: %d\n", mulheres_e2);
+    
     printf("--Equipe com a maior quantidade de mulheres--\n");
     if(mulheres_e1 > mulheres_e2){
         printf("Equipe com a maior quantidade de mulheres: Equipe 1\n");
@@ -27,22 +26,27 @@ void MaisMulheres(char sexo[2][7][1]){
 }
 
 void SelecaoProjeto(char estudantes[2][7][20], char sexo[2][7][1], float notas[2][7][1]){
+    char selecionadas[15][20];
+    int j=0;
+    
     printf("--Selecao de alunas para projeto--\n");
-    printf("Alunas selecionadas para o projeto da equipe 1: \n");
+    printf("Alunas selecionadas para o projeto: \n");
     for(int i=0; i<6; i++){
         if(sexo[0][0][i] == 'f' && notas[0][0][i] >= 8.0){
-            printf("%s ", estudantes[0][i]);
+            strcpy(selecionadas[j], estudantes[0][i]);
+            j++;
         }
     }
-    printf("\n");
-    
-    printf("Alunas selecionadas para o projeto da equipe 2: \n");
     for(int i=0; i<6; i++){
         if(sexo[1][0][i] == 'f' && notas[1][0][i] >= 8.0){
-            printf("%s ", estudantes[1][i]);
+            strcpy(selecionadas[j], estudantes[1][i]);
+            j++;
         }
     }
-    printf("\n");
+    
+    for(int i=0; i<strlen(selecionadas)-1; i++){
+        printf("%s\n", selecionadas[i]);
+    }
 }
 
 void PontoExtra(char estudantes[2][7][20], float notas[2][7][1]){
@@ -105,6 +109,6 @@ int main() {
     PontoExtra(estudantes, notas);
     printf("\n");
     AdicionarAluno(estudantes, sexo, notas);
-
+    printf("\n");
     return 0;
 }
