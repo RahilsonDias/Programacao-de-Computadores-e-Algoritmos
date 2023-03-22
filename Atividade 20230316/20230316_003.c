@@ -1,26 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void SomaMatrizes(int *ptrl1, int *ptrc1, int** ptrm1,int* ptrl2, int* ptrc2, int** ptrm2){
+void SomaMatrizes(int *ptrl1, int *ptrc1, double** ptrm1, int* ptrl2, int* ptrc2, double** ptrm2){
     int r, s;
-    int** soma;
+    double** soma;
     
+    // Verifica se as matrizes possuem a mesma ordem
     if((*ptrl1 != *ptrl2) || (*ptrc1 != *ptrc2)){
         printf("Erro: Impossível realizar a soma\n");
     }
     else{
         r = *ptrl1;
         s = *ptrc1;
-        soma = (int**) malloc(r * sizeof(int*));
+        
+        soma = (double**) malloc(r * sizeof(double*));
         for (int i = 0; i < r; i++) {
-            *(soma + i) = (int*) malloc(s * sizeof(int));
+            *(soma + i) = (double*) malloc(s * sizeof(double));
         }
         
         printf("Soma das matrizes:\n");
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < s; j++) {
-                soma[i][j] = ptrm1[i][j] + ptrm2[i][j];
-                printf("%d ", soma[i][j]);
+                *(*(soma+i)+j) = *(*(ptrm1+i)+j) + *(*(ptrm2+i)+j);
+                printf("%.2lf ", *(*(soma+i)+j));
             }
             printf("\n");
         }
@@ -30,27 +32,27 @@ void SomaMatrizes(int *ptrl1, int *ptrc1, int** ptrm1,int* ptrl2, int* ptrc2, in
 }
 
 int main() {
-    int m, n; // dimensões da matriz 1
-    int** matriz1; // ponteiro para a matriz 1
+    int m, n;
+    double** matriz1;
     int p, q;
-    int** matriz2;
+    double** matriz2;
     
     printf("Linhas da matriz 1: ");
     scanf("%d", &m);
     printf("Colunas da matriz 1: ");
     scanf("%d", &n);
     
-    // alocação da matriz 1 usando aritmética de ponteiros
-    matriz1 = (int**) malloc(m * sizeof(int*));
+    // Matriz 1 - Alocação
+    matriz1 = (double**) malloc(m * sizeof(double*));
     for (int i = 0; i < m; i++) {
-        *(matriz1 + i) = (int*) malloc(n * sizeof(int));
+        *(matriz1 + i) = (double*) malloc(n * sizeof(double));
     }
     
-    // inicialização da matriz 1
+    // Matriz 1 - Preenchimento
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
             printf("Elemento [%d][%d]: ", i+1, j+1);
-            scanf("%d", &*(*(matriz1 + i) + j));
+            scanf("%lf", &*(*(matriz1 + i) + j));
         }
     }
     
@@ -59,17 +61,17 @@ int main() {
     printf("Colunas da matriz 2: ");
     scanf("%d", &q);
     
-    // alocação da matriz 2 usando aritmética de ponteiros
-    matriz2 = (int**) malloc(m * sizeof(int*));
+    // Matriz 2 - Alocação
+    matriz2 = (double**) malloc(m * sizeof(double*));
     for (int i = 0; i < p; i++) {
-        *(matriz2 + i) = (int*) malloc(q * sizeof(int));
+        *(matriz2 + i) = (double*) malloc(q * sizeof(double));
     }
     
-    // inicialização da matriz 2
+    // Matriz 2 - Preenchimento
     for (int i = 0; i < p; i++) {
         for (int j = 0; j < q; j++) {
             printf("Elemento [%d][%d]: ", i+1, j+1);
-            scanf("%d", &*(*(matriz2 + i) + j));
+            scanf("%lf", &*(*(matriz2 + i) + j));
         }
     }
     
